@@ -1,0 +1,29 @@
+import os
+import sys
+import evdev
+
+# Get all devices that are connected
+devices = [evdev.InputDevice(path) for path in evdev.list_devices()]
+
+dev = None
+# Name of device to look for
+deviceToLookFor = 'DEVICE NAME HERE'
+
+for device in devices:
+    # Check if device is selected one
+    if device.name == deviceToLookFor and 'input device here' in device.phys:
+        print(device.path, device.name, device.phys)
+        dev = evdev.InputDevice(device.path)
+        break
+
+if dev is None:
+    sys.exit("No device was found")
+
+for event in dev.read_loop():
+    if event.type == evdev.ecodes.EV_KEY:
+        key = evdev.categorize(event)
+        # ONLY TRIGGER WHEN KEY IS PRESSED
+        if key.keystate == key.key_down:
+            #INSERT MACROS YOU WANNA USE HERE BASED ON KEY
+            if key.keycode == 'KEY_Q':
+                os.system('/usr/local/bin/composer install')
