@@ -34,6 +34,8 @@ for event in dev.read_loop():
         if key.keystate == key.key_down:
             if key.keycode == 'KEY_Q':
                 os.system('/bin/bash /home/exp0158/Projects/MACROS/docker_start_input.sh')
+            if key.keycode == 'KEY_W':
+                os.system('/bin/bash /home/exp0158/Projects/MACROS/docker_development.sh')
             if key.keycode == 'KEY_T':
                 os.system('/bin/bash /home/exp0158/Projects/MACROS/docker_stop_input.sh')
             # if key.keycode == 'KEY_Z':
