@@ -36,7 +36,20 @@ for event in dev.read_loop():
                 os.system('/bin/bash /home/exp0158/Projects/MACROS/docker_start_input.sh')
             if key.keycode == 'KEY_W':
                 os.system('/bin/bash /home/exp0158/Projects/MACROS/docker_development.sh')
+            if key.keycode == 'KEY_E':
+                os.system('/bin/bash /home/exp0158/Projects/MACROS/docker_m2_dev_update.sh')
+            if key.keycode == 'KEY_R':
+                os.system('/bin/bash /home/exp0158/Projects/MACROS/rabbitmq_link.sh')
             if key.keycode == 'KEY_T':
                 os.system('/bin/bash /home/exp0158/Projects/MACROS/docker_stop_input.sh')
             # if key.keycode == 'KEY_Z':
             #     os.system('')
+            if key.keycode == 'KEY_A':
+                os.system('/usr/sbin/alsa force-reload')
+            if key.keycode == 'KEY_C':
+                os.system('/usr/bin/xdotool key XF86AudioPrev')
+            if key.keycode == 'KEY_V':
+                os.system('/usr/bin/xdotool key XF86AudioPlay')
+            if key.keycode == 'KEY_B':
+                os.system('/usr/bin/xdotool key XF86AudioNext')
+
