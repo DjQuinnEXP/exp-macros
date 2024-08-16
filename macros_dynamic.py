@@ -6,6 +6,8 @@ import evdev
 if not os.geteuid() == 0:
     sys.exit("Run this command as root")
 
+scriptpath = os.getcwd() + '/'
+
 devices = [evdev.InputDevice(path) for path in evdev.list_devices()]
 
 dev = None
@@ -33,19 +35,11 @@ for event in dev.read_loop():
         key = evdev.categorize(event)
         if key.keystate == key.key_down:
             if key.keycode == 'KEY_Q':
-                os.system('/bin/bash /home/exp0158/Projects/MACROS/docker_start_input.sh')
+                os.system('/bin/bash '+ scriptpath + 'warden_start.sh')
             if key.keycode == 'KEY_W':
-                os.system('/bin/bash /home/exp0158/Projects/MACROS/docker_development.sh')
-            if key.keycode == 'KEY_E':
-                os.system('/bin/bash /home/exp0158/Projects/MACROS/docker_m2_dev_update.sh')
-            if key.keycode == 'KEY_R':
-                os.system('/bin/bash /home/exp0158/Projects/MACROS/rabbitmq_link.sh')
+                os.system('/bin/bash '+ scriptpath + 'warden_dev_update.sh')
             if key.keycode == 'KEY_T':
-                os.system('/bin/bash /home/exp0158/Projects/MACROS/docker_stop_input.sh')
-            # if key.keycode == 'KEY_Z':
-            #     os.system('')
-            if key.keycode == 'KEY_A':
-                os.system('/usr/sbin/alsa force-reload')
+                os.system('/bin/bash '+ scriptpath + 'warden_stop.sh')
             if key.keycode == 'KEY_C':
                 os.system('/usr/bin/xdotool key XF86AudioPrev')
             if key.keycode == 'KEY_V':
