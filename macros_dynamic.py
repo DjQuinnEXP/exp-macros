@@ -35,11 +35,13 @@ for event in dev.read_loop():
         key = evdev.categorize(event)
         if key.keystate == key.key_down:
             if key.keycode == 'KEY_Q':
-                os.system('/bin/bash '+ scriptpath + 'warden_start.sh')
+                os.system('/bin/bash '+ scriptpath + 'warden_start_list.sh')
             if key.keycode == 'KEY_W':
                 os.system('/bin/bash '+ scriptpath + 'warden_dev_update.sh')
             if key.keycode == 'KEY_T':
                 os.system('/bin/bash '+ scriptpath + 'warden_stop.sh')
+            if key.keycode == 'KEY_A':
+                os.system('/bin/bash '+ scriptpath + 'warden_services.sh')
             if key.keycode == 'KEY_C':
                 os.system('/usr/bin/xdotool key XF86AudioPrev')
             if key.keycode == 'KEY_V':
