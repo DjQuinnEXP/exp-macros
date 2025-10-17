@@ -1,6 +1,6 @@
 #!/bin/sh
 ## get name of the folder to start the container in
-user_input=$(zenity --entry)
+source ./warden_get_env.sh
 ## cd to the folder
 cd /home/djquinn/domains/$user_input
 ## start the container
